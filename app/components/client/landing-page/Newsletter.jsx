@@ -1,9 +1,9 @@
-import { FiMail } from 'react-icons/fi'
+import { FiMail } from "react-icons/fi";
 
 const Newsletter = () => {
   return (
-    <div className="categoris mt-5 bg-green-50">
-      <div className="container mx-auto flex items-center justify-between px-2 py-6 sm:px-4 md:px-8">
+    <div className="newsletter">
+      <div className="mx-auto flex flex-col items-end justify-between">
         <div className="left flex items-center gap-3">
           <div className="icon text-5xl text-green-700">
             <FiMail />
@@ -28,7 +28,7 @@ const Newsletter = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Newsletter
+export default Newsletter;
