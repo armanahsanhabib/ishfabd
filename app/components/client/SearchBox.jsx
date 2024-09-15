@@ -1,4 +1,4 @@
-import { IoSearch } from 'react-icons/io5'
+import { IoSearch } from "react-icons/io5";
 
 const SearchBox = () => {
   return (
@@ -8,16 +8,16 @@ const SearchBox = () => {
         name="search"
         id="search"
         placeholder="search here..."
-        className="w-full rounded-md border px-2 py-1 text-sm focus:outline focus:outline-green-500 sm:px-4 sm:py-2 sm:focus:outline-2"
+        className="w-full rounded-md border py-1 pl-8 text-sm focus:shadow-inner focus:outline focus:outline-green-500 sm:py-2 sm:focus:outline-2"
       />
       <button
         type="button"
-        className="absolute right-2 top-1/2 -translate-y-1/2 hover:text-green-600 sm:right-4"
+        className="absolute left-2 top-1/2 w-max -translate-y-1/2 hover:text-green-600 sm:right-4"
       >
         <IoSearch className="text-lg sm:text-xl" />
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default SearchBox
+export default SearchBox;
