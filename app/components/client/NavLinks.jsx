@@ -10,7 +10,7 @@ const NavLinks = ({ isNavMenuOpen, setIsNavMenuOpen }) => {
       title: "হোম",
     },
     {
-      link: "/all-products",
+      link: "/products",
       title: "আমাদের প্রোডাক্টস",
     },
     {
