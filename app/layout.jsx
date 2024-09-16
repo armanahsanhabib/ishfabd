@@ -1,4 +1,4 @@
-import { inter } from "./fonts";
+import { hindSiliguri } from "./fonts";
 import "./globals.css";
 
 export const metadata = {
@@ -10,7 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} text-gray-800`}>{children}</body>
+      <body className={`${hindSiliguri.className} text-gray-800`}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -6,19 +6,19 @@ const NavLinks = () => {
   const links = [
     {
       link: "/",
-      title: "Home",
+      title: "হোম",
     },
     {
       link: "/all-products",
-      title: "All products",
+      title: "আমাদের প্রোডাক্টস",
     },
     {
       link: "/my-account",
-      title: "My Account",
+      title: "আমার প্রোফাইল",
     },
     {
       link: "/my-orders",
-      title: "Orders",
+      title: "অর্ডার",
     },
   ];
 
@@ -27,7 +27,10 @@ const NavLinks = () => {
       <ul className={clsx("hidden items-center gap-8 sm:flex")}>
         {links.map((item, index) => (
           <li key={index}>
-            <Link href={item.link} className="font-medium hover:underline">
+            <Link
+              href={item.link}
+              className="font-medium transition-all hover:text-orange-500 hover:underline"
+            >
               {item.title}
             </Link>
           </li>

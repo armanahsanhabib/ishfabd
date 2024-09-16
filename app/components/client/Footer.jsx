@@ -1,11 +1,7 @@
-import { hindSiliguri } from "@/app/fonts";
-
 const Footer = () => {
   return (
-    <footer
-      className={`${hindSiliguri.className} footer mt-16 bg-gray-800 text-slate-100`}
-    >
-      <div className="container mx-auto flex justify-between px-2 py-8 sm:px-4 md:px-8">
+    <footer className={`footer mt-16 bg-gray-800 text-slate-100`}>
+      <div className="container mx-auto flex flex-col justify-between gap-8 px-2 py-8 sm:px-4 md:flex-row md:px-8">
         <div className="left">
           <h3 className="text-2xl font-bold">
             <span className="text-yellow-500">ইশফাবিডি</span>.কম

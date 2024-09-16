@@ -1,18 +1,24 @@
 import Link from "next/link";
 import { BsCart2 } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
+import { IoSearch } from "react-icons/io5";
 
 const ActionsMenu = () => {
   return (
-    <div className="flex items-center gap-5 text-2xl">
-      <Link href={"/my-cart"} className="cart relative text-green-600">
-        <BsCart2 />
-        <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-green-600 text-[11px] font-medium text-white">
-          0
-        </span>
+    <div className="flex items-center gap-2 text-2xl text-gray-800 sm:gap-5 sm:text-3xl">
+      <Link href={"/search"} className="profile rounded-full">
+        <IoSearch className="hover:drop-shadow-lg" />
       </Link>
+      <div className="cart relative">
+        <Link href={"/my-cart"}>
+          <BsCart2 className="hover:drop-shadow-lg" />
+        </Link>
+        <div className="absolute -right-1 -top-1 h-4 w-4 place-content-center rounded-full bg-orange-500 text-center text-xs font-medium text-white shadow sm:text-sm">
+          0
+        </div>
+      </div>
       <Link href={"/profile"} className="profile rounded-full">
-        <FaUserCircle className="text-green-600" />
+        <FaUserCircle className="hover:drop-shadow-lg" />
       </Link>
     </div>
   );
