@@ -1,7 +1,11 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 import { FaExclamationTriangle } from "react-icons/fa";
 
 const NotFound = () => {
+  const router = useRouter();
+
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-gray-100">
       <FaExclamationTriangle className="mb-6 text-9xl text-yellow-500" />
@@ -10,12 +14,13 @@ const NotFound = () => {
       <p className="mb-8 text-gray-500">
         It looks like the page you're looking for doesn't exist.
       </p>
-      <Link
-        href={"/"}
-        className="rounded-md bg-blue-600 px-6 py-3 text-white shadow-lg transition duration-300 ease-in-out hover:bg-blue-700"
+      <button
+        type="button"
+        onClick={() => router.back()}
+        className="rounded-md bg-blue-500 px-6 py-2 text-white shadow-lg transition duration-300 ease-in-out hover:bg-blue-700"
       >
-        Go Back Home
-      </Link>
+        পিছনে ফিরে যান
+      </button>
     </div>
   );
 };

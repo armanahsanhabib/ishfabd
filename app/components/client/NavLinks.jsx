@@ -18,7 +18,7 @@ const NavLinks = ({ isNavMenuOpen, setIsNavMenuOpen }) => {
       title: "আমার প্রোফাইল",
     },
     {
-      link: "/my-orders",
+      link: "/my-account/orders",
       title: "অর্ডার",
     },
   ];
@@ -45,9 +45,9 @@ const NavLinks = ({ isNavMenuOpen, setIsNavMenuOpen }) => {
         <FaBars />
       </button>
       {isNavMenuOpen && (
-        <div className="fixed right-0 top-0 z-[60] h-full w-64 border-r bg-gray-100 p-3 shadow">
-          <div className="header mb-2 flex items-center justify-between border-b pb-1 text-lg font-medium">
-            <h3 className="text-orange-500">সমস্ত ক্যাটাগরি</h3>
+        <div className="fixed right-0 top-0 z-[60] h-full w-64 border-r bg-gray-100 shadow">
+          <div className="header flex items-center justify-between border-b p-3 text-lg font-medium">
+            <h3 className="text-orange-500">ন্যাভ মেনু</h3>
             <button
               type="button"
               className="rounded p-1 hover:bg-white hover:text-red-500"
@@ -56,12 +56,12 @@ const NavLinks = ({ isNavMenuOpen, setIsNavMenuOpen }) => {
               <LiaTimesSolid />
             </button>
           </div>
-          <ul className="list-inside list-disc space-y-2 hover:*:text-orange-500 hover:*:underline">
+          <ul className="*:border-b *:border-gray-200 *:bg-white hover:*:text-orange-500">
             {links.map((item, index) => (
               <li key={index}>
                 <Link
                   href={item.link}
-                  className="font-medium transition-all hover:text-orange-500 hover:underline"
+                  className="inline-block w-full px-3 py-2 font-medium transition-all hover:text-orange-500"
                 >
                   {item.title}
                 </Link>

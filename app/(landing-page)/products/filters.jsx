@@ -14,27 +14,31 @@ const Filters = () => {
 
   const [showCategoryFilter, setShowCategoryFilter] = useState(true);
   const [showPriceFilter, setShowPriceFilter] = useState(true);
+  const [showRatingFilter, setShowRatingFilter] = useState(true);
+  const [showSortBy, setShowSortBy] = useState(true);
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
 
   const categories = [
     { name: "RoboLab Products", url: "robolab-products" },
     { name: "Basic Components", url: "basic-components" },
-    { name: "Robotics & Arduiono", url: "robotics-arduino" },
+    { name: "Robotics & Arduino", url: "robotics-arduino" },
     { name: "Power Source", url: "power-source" },
     { name: "All Modules", url: "all-modules" },
     { name: "Project Kits", url: "project-kits" },
     { name: "Drone/Plane Parts", url: "drone-plane" },
-    { name: "Micro-controler & IC", url: "micro-controller-and-ic" },
+    { name: "Micro-controller & IC", url: "micro-controller-and-ic" },
     { name: "Tools and Accessories", url: "tools-accessories" },
   ];
 
-  const priceRanges = [
-    { label: "Under 100 Tk", value: "under-100" },
-    { label: "100 Tk - 500 Tk", value: "100-500" },
-    { label: "501 Tk - 1000 Tk", value: "501-1000" },
-    { label: "1001 Tk - 1500 Tk", value: "1001-1500" },
-    { label: "1501 Tk - 3000 Tk", value: "1501-3000" },
-    { label: "3001 Tk - 5000 Tk", value: "3001-5000" },
-    { label: "Above 5000 Tk", value: "above-5000" },
+  const ratings = [5, 4, 3, 2, 1];
+
+  const sortOptions = [
+    { label: "Rating", value: "rating" },
+    { label: "Newest", value: "new" },
+    { label: "Price (Low to High)", value: "price-asc" },
+    { label: "Price (High to Low)", value: "price-desc" },
+    { label: "Discount", value: "discount" },
   ];
 
   const handleSearch = (key, value) => {
@@ -52,22 +56,38 @@ const Filters = () => {
     handleSearch("category", category);
   };
 
-  const handlePriceRangeClick = (price) => {
-    handleSearch("price", price);
+  const handlePriceRangeSubmit = () => {
+    if (minPrice || maxPrice) {
+      handleSearch("minPrice", minPrice);
+      handleSearch("maxPrice", maxPrice);
+    }
+  };
+
+  const handleRatingClick = (rating) => {
+    handleSearch("rating", rating);
+  };
+
+  const handleSortByChange = (sortBy) => {
+    handleSearch("sort", sortBy);
   };
 
   const clearFilters = () => {
     const params = new URLSearchParams(searchParams);
     params.delete("category");
-    params.delete("price");
+    params.delete("minPrice");
+    params.delete("maxPrice");
+    params.delete("rating");
+    params.delete("sort");
     router.replace(`${pathname}?${params.toString()}`);
   };
 
   const selectedCategory = searchParams.get("category");
-  const selectedPrice = searchParams.get("price");
+  const selectedRating = searchParams.get("rating");
+  const selectedSort = searchParams.get("sort");
 
   return (
-    <div className="filter_container hidden w-[200px] flex-col gap-3 text-gray-700 lg:flex lg:w-[280px]">
+    <>
+      {/* Category Filter */}
       <div className="rounded-md border bg-gray-50 px-5 py-3">
         <div className="heading">
           <button
@@ -109,6 +129,7 @@ const Filters = () => {
         </ul>
       </div>
 
+      {/* Price Range Filter */}
       <div className="rounded-md border bg-gray-50 px-5 py-3">
         <div className="heading">
           <button
@@ -124,43 +145,135 @@ const Filters = () => {
           </button>
           {showPriceFilter && <hr className="mt-2" />}
         </div>
-        <ul
-          className={clsx("mt-2 flex flex-col text-sm font-light", {
+        <div
+          className={clsx("mt-2 flex flex-col gap-2 text-sm font-light", {
             hidden: !showPriceFilter,
           })}
         >
-          {priceRanges.map((priceRange) => (
-            <li key={priceRange.value}>
+          <div className="flex items-center gap-2">
+            <input
+              type="number"
+              value={minPrice}
+              onChange={(e) => setMinPrice(e.target.value)}
+              placeholder="Min Price"
+              className="w-full rounded-md border px-2 py-1"
+            />
+            <span>-</span>
+            <input
+              type="number"
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(e.target.value)}
+              placeholder="Max Price"
+              className="w-full rounded-md border px-2 py-1"
+            />
+          </div>
+          <button
+            onClick={handlePriceRangeSubmit}
+            className="mt-2 rounded-md bg-blue-600 py-1 text-white hover:bg-blue-700"
+          >
+            Apply
+          </button>
+        </div>
+      </div>
+
+      {/* Rating Filter */}
+      <div className="rounded-md border bg-gray-50 px-5 py-3">
+        <div className="heading">
+          <button
+            className="flex w-full items-center justify-between"
+            onClick={() => setShowRatingFilter((prev) => !prev)}
+          >
+            <h3 className="text-md font-medium">Rating</h3>
+            <IoMdArrowDropdown
+              className={clsx("text-xl transition-transform", {
+                "rotate-180": showRatingFilter,
+              })}
+            />
+          </button>
+          {showRatingFilter && <hr className="mt-2" />}
+        </div>
+        <ul
+          className={clsx("mt-2 flex flex-col text-sm font-light", {
+            hidden: !showRatingFilter,
+          })}
+        >
+          {ratings.map((rating) => (
+            <li key={rating}>
               <button
                 type="button"
-                onClick={() => handlePriceRangeClick(priceRange.value)}
+                onClick={() => handleRatingClick(rating)}
                 className={clsx(
                   "my-1 flex w-full items-center gap-2 py-1 text-left",
                   {
-                    "font-medium text-blue-600":
-                      selectedPrice === priceRange.value,
+                    "font-medium text-blue-600": selectedRating == rating,
                   },
                 )}
               >
                 <TbPointFilled />
-                {priceRange.label}
+                {rating} Stars & up
               </button>
             </li>
           ))}
         </ul>
       </div>
 
-      {(selectedCategory || selectedPrice) && (
+      {/* Sort By Filter */}
+      <div className="rounded-md border bg-gray-50 px-5 py-3">
+        <div className="heading">
+          <button
+            className="flex w-full items-center justify-between"
+            onClick={() => setShowSortBy((prev) => !prev)}
+          >
+            <h3 className="text-md font-medium">Sort By</h3>
+            <IoMdArrowDropdown
+              className={clsx("text-xl transition-transform", {
+                "rotate-180": showSortBy,
+              })}
+            />
+          </button>
+          {showSortBy && <hr className="mt-2" />}
+        </div>
+        <ul
+          className={clsx("mt-2 flex flex-col text-sm font-light", {
+            hidden: !showSortBy,
+          })}
+        >
+          {sortOptions.map((option) => (
+            <li key={option.value}>
+              <button
+                type="button"
+                onClick={() => handleSortByChange(option.value)}
+                className={clsx(
+                  "my-1 flex w-full items-center gap-2 py-1 text-left",
+                  {
+                    "font-medium text-blue-600": selectedSort === option.value,
+                  },
+                )}
+              >
+                <TbPointFilled />
+                {option.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Clear Filters */}
+      {(selectedCategory ||
+        selectedRating ||
+        minPrice ||
+        maxPrice ||
+        selectedSort) && (
         <button
           type="button"
           onClick={clearFilters}
-          className="flex w-full items-center justify-center gap-2 rounded-md border bg-white py-2 text-center transition-all hover:bg-amber-600 hover:text-white"
+          className="flex w-full items-center justify-center gap-2 rounded-md border bg-gray-100 py-1 text-center shadow-inner transition-all hover:border-orange-200 hover:bg-orange-100 hover:text-orange-500 hover:shadow"
         >
           <RxCross2 className="text-xl" />
           Clear Filters
         </button>
       )}
-    </div>
+    </>
   );
 };
 

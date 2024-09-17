@@ -1,11 +1,15 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
+import Image from "next/image";
 import Link from "next/link";
 import { BsCart2 } from "react-icons/bs";
-import { FaUserCircle } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 
-const ActionsMenu = () => {
+const ActionsMenu = async () => {
+  const session = await getServerSession(authOptions);
+
   return (
-    <div className="flex items-center gap-2 text-2xl text-gray-800 sm:gap-5 sm:text-3xl">
+    <div className="flex items-center gap-5 text-2xl text-gray-800 sm:text-3xl">
       <Link href={"/search"} className="search rounded-full sm:hidden">
         <IoSearch className="hover:drop-shadow-lg" />
       </Link>
@@ -17,8 +21,14 @@ const ActionsMenu = () => {
           0
         </div>
       </div>
-      <Link href={"/profile"} className="profile rounded-full">
-        <FaUserCircle className="hover:drop-shadow-lg" />
+      <Link href={"/my-account"}>
+        <Image
+          src={session?.user.image || "/avatar-default.png"}
+          alt="User Profile"
+          width={50}
+          height={50}
+          className="size-7 rounded-full ring-gray-600 sm:ring-2 sm:ring-offset-1"
+        />
       </Link>
     </div>
   );

@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
     <>
       <Header />
       <MenuBar />
-      <main className="pb-16 pt-4">
+      <main>
         <NextTopLoader />
         {children}
       </main>

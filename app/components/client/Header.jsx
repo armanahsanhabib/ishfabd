@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { LiaTimesSolid } from "react-icons/lia";
+import { MdFormatListBulletedAdd } from "react-icons/md";
+import { RiArrowRightDoubleLine } from "react-icons/ri";
 import CategoriesMenu from "./CategoriesMenu";
 import NavLinks from "./NavLinks";
 
@@ -24,9 +26,12 @@ const Header = () => {
         </div>
       </div>
       {isCategoryMenuOpen && (
-        <div className="fixed left-0 top-0 z-[60] h-full w-64 border-r bg-gray-100 p-3 shadow">
-          <div className="header mb-2 flex items-center justify-between border-b pb-1 text-lg font-medium">
-            <h3 className="text-orange-500">সমস্ত ক্যাটাগরি</h3>
+        <div className="fixed left-0 top-0 z-[60] h-full w-64 border-r bg-gray-100 shadow">
+          <div className="header flex items-center justify-between border-b p-3 text-lg font-medium">
+            <h3 className="flex items-center gap-2 text-orange-500">
+              <MdFormatListBulletedAdd className="text-xl" />{" "}
+              <span className="mt-1">সমস্ত ক্যাটাগরি</span>
+            </h3>
             <button
               type="button"
               className="rounded p-1 hover:bg-white hover:text-red-500"
@@ -35,36 +40,30 @@ const Header = () => {
               <LiaTimesSolid />
             </button>
           </div>
-          <ul className="list-inside list-disc space-y-2 hover:*:text-orange-500 hover:*:underline">
+          <ul className="text-sm *:border-b *:border-gray-200 *:bg-white hover:*:text-orange-500 sm:text-base">
             <li>
-              <a href="category1">ক্যাটাগরি নাম 1</a>
+              <a className="flex items-center gap-2 px-3 py-2" href="category1">
+                <RiArrowRightDoubleLine />
+                বাদাম, কাজু বাদাম
+              </a>
             </li>
             <li>
-              <a href="category2">ক্যাটাগরি নাম 2</a>
+              <a className="flex items-center gap-2 px-3 py-2" href="category1">
+                <RiArrowRightDoubleLine />
+                স্পেশাল খাঁটি মধু
+              </a>
             </li>
             <li>
-              <a href="category3">ক্যাটাগরি নাম 3</a>
+              <a className="flex items-center gap-2 px-3 py-2" href="category1">
+                <RiArrowRightDoubleLine />
+                আখরোট
+              </a>
             </li>
             <li>
-              <a href="category4">ক্যাটাগরি নাম 4</a>
-            </li>
-            <li>
-              <a href="category5">ক্যাটাগরি নাম 5</a>
-            </li>
-            <li>
-              <a href="category6">ক্যাটাগরি নাম 6</a>
-            </li>
-            <li>
-              <a href="category7">ক্যাটাগরি নাম 7</a>
-            </li>
-            <li>
-              <a href="category8">ক্যাটাগরি নাম 8</a>
-            </li>
-            <li>
-              <a href="category9">ক্যাটাগরি নাম 9</a>
-            </li>
-            <li>
-              <a href="category10">ক্যাটাগরি নাম 10</a>
+              <a className="flex items-center gap-2 px-3 py-2" href="category1">
+                <RiArrowRightDoubleLine />
+                কিসমিস, ছোলা, ভুষি
+              </a>
             </li>
           </ul>
         </div>

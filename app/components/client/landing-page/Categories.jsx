@@ -13,7 +13,7 @@ const Categories = () => {
   return (
     <div className="categoris mt-5">
       <div className="container mx-auto px-2 py-6 sm:px-4 md:px-8">
-        <h3 className="mb-3 font-bold sm:text-lg">Categories</h3>
+        <h3 className="mb-3 font-bold sm:text-lg">জনপ্রিয় ক্যাটাগরি</h3>
         <div className="flex gap-5">
           {category.map((item, index) => (
             <Link
