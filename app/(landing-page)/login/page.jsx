@@ -38,8 +38,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex h-[80vh] items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md rounded-lg border border-gray-200 bg-white p-6 shadow-md">
+    <div className="flex items-center justify-center bg-gray-100 sm:h-[80vh]">
+      <div className="w-full max-w-md border-gray-200 bg-white p-6 shadow-md sm:rounded-lg sm:border">
         <h2 className="mb-6 text-center text-2xl font-semibold text-blue-600">
           লগিন করুন
         </h2>
