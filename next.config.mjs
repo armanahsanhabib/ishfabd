@@ -14,6 +14,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "platform-lookaside.fbsbx.com",
       },
+      {
+        protocol: "https",
+        hostname: "ishfabd.s3.amazonaws.com",
+      },
     ],
   },
 };

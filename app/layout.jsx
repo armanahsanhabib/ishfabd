@@ -10,6 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/ishfabd_icon.png" />
+      </head>
       <body className={`${hindSiliguri.className} text-gray-800`}>
         {children}
       </body>

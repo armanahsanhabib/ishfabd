@@ -6,6 +6,15 @@ import { MdError } from "react-icons/md";
 
 const page = async () => {
   const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return (
+      <div className="flex h-[70vh] items-center justify-center">
+        <p className="text-lg">You need to sign in to access this page</p>
+      </div>
+    );
+  }
+
   const customer = await fetchCustomerData(session.id);
 
   // Dummy order data
