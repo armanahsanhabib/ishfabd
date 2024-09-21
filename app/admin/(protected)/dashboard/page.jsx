@@ -255,6 +255,39 @@ const DashboardPage = () => {
               </tbody>
             </table>
           </div>
+
+          <div className="rounded-md border bg-white p-4">
+            <table className="w-full border-separate border-spacing-2">
+              <thead>
+                <tr className="*:border-y first:*:rounded-s-md first:*:border-s last:*:rounded-e-md last:*:border-e">
+                  <th>name</th>
+                  <th>age</th>
+                  <th>phone</th>
+                  <th>status</th>
+                </tr>
+              </thead>
+              <tbody className="*:border">
+                <tr className="*:border">
+                  <td>Ahsan Habib</td>
+                  <td>22</td>
+                  <td>01704428814</td>
+                  <td>Active</td>
+                </tr>
+                <tr className="*:border">
+                  <td>Ahsan Habib</td>
+                  <td>22</td>
+                  <td>01704428814</td>
+                  <td>Active</td>
+                </tr>
+                <tr className="*:border">
+                  <td>Ahsan Habib</td>
+                  <td>22</td>
+                  <td>01704428814</td>
+                  <td>Active</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

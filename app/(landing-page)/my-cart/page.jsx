@@ -1,5 +1,5 @@
-import { inter } from "@/app/fonts";
 import Image from "next/image";
+import Link from "next/link";
 import { BsDot } from "react-icons/bs";
 import { HiMinus, HiPlus } from "react-icons/hi";
 
@@ -37,7 +37,7 @@ const page = () => {
           <h3 className="mb-2 text-xl font-bold text-blue-500">আমার কার্টঃ</h3>
           {/* Cart Items */}
           <div
-            className={`${inter.className} cart rounded-md border border-gray-200 bg-white px-3`}
+            className={`cart rounded-md border border-gray-200 bg-white px-3`}
           >
             <table className="w-full border-collapse">
               <tbody>
@@ -55,12 +55,15 @@ const page = () => {
                         className="size-24 rounded-lg border border-gray-200 bg-gray-100"
                       />
                     </td>
-                    <td className="mt-1 h-28">
-                      <div className="flex h-full flex-col justify-between">
-                        <h4 className="line-clamp-1 text-sm font-semibold text-gray-600">
+                    <td className="h-28">
+                      <div className="flex h-full flex-col justify-around">
+                        <Link
+                          href={"/products"}
+                          className="line-clamp-1 font-semibold text-gray-600 hover:underline"
+                        >
                           কাশ্মীরি কাজু বাদাম - High quality - 500gm pack
-                        </h4>
-                        <p className="flex gap-2 text-sm font-medium text-gray-600">
+                        </Link>
+                        <p className="flex gap-2 font-medium text-gray-600">
                           <span className="text-gray-500 line-through">
                             245.00 Tk
                           </span>
@@ -81,13 +84,11 @@ const page = () => {
                       </div>
                     </td>
                     <td className="flex h-28 flex-col items-end justify-around py-3">
-                      <h5 className="price text-lg font-bold text-gray-700">
-                        ৳ 530.00
-                      </h5>
+                      <h5 className="price text-xl font-bold">৳ 530.00</h5>
                       <div className="qty flex text-sm font-medium">
                         <button
                           type="button"
-                          className="rounded-s bg-gray-100 p-2 text-sm outline-none hover:bg-gray-200"
+                          className="rounded-s border p-2 text-sm outline-none hover:bg-gray-100"
                         >
                           <HiMinus />
                         </button>
@@ -97,11 +98,11 @@ const page = () => {
                           id="qty"
                           min={1}
                           defaultValue={1}
-                          className="w-8 border text-center outline-blue-500 focus:outline-1"
+                          className="w-8 border-y text-center outline-blue-500 focus:outline-1"
                         />
                         <button
                           type="button"
-                          className="rounded-e bg-gray-100 p-2 text-sm outline-none hover:bg-gray-200"
+                          className="rounded-e border p-2 text-sm outline-none hover:bg-gray-100"
                         >
                           <HiPlus />
                         </button>
